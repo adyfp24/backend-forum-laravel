@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Route::get('/coba', [App\Http\Controllers\API\UserController::class, 'getAllUser']);
-Route::get('v1/login',[AuthController::class, 'Login']);
-Route::get('v1/logout',[AuthController::class, 'Logout']);
-Route::get('v1/register',[AuthController::class, 'Register']);
-Route::get('v1/forget',[AuthController::class, 'Forget']);
+Route::post('v1/login',[AuthController::class, 'Login']);
+Route::post('v1/logout',[AuthController::class, 'Logout']);
+Route::post('v1/register',[AuthController::class, 'Register']);
+Route::post('v1/forget',[AuthController::class, 'Forget']);
