@@ -9,6 +9,7 @@ use Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -18,12 +19,15 @@ class AuthController extends Controller
             $currentUser = auth()->user();
             return response()->json(['message' => 'Login Berhasil', $currentUser, 201]);
         }else{
-            return response()->json('eror');
+            return response()->json('login gagal');
         }      
     }
-    public function Logout()
+    public function Logout(Request $request)
     {
-        return 'cek logout';
+        $user = auth()->user();
+        $user->api_token = Str::random(80);
+        $user->save();
+        return response()->json(['message' => 'Logout berhasil'], 200);
     }
     public function Forget()
     {
