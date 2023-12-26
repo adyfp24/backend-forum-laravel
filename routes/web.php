@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\api\v1\ShortlinkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,5 @@ Route::get('test', function(){
     echo 'test';
 });
 
-Route::get('/testcontroller/{nama}', 'TestController@index');
-route::get('/formulir','FormController@index');
+Route::get('/{code}',[ShortlinkController::class, 'redirectLongURL']);
 route::post('/formulir/proses','FormController@proses');

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Http\Resources\UserResource;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Str;
 use Hash;
@@ -26,7 +25,7 @@ class AuthController extends Controller
     {
         $user = auth()->user();
         $user->api_token = Str::random(80);
-        $user->save();
+          $user->save();
         return response()->json(['message' => 'Logout berhasil'], 200);
     }
     public function Forget()
@@ -40,10 +39,8 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'api_token' => Str::random(80),
-        ]);
-
-        return response()->json(['message' => 'Registrasi berhasil', 'user' => $user], 201);
-        //new UserResource(return$user);
-    }
-    
+        ]); 
+           return response()->json(['message' => 'Registrasi berhasil', 'user' => $user], 201);
+           //new UserResource(return$user);
+    }    
 }
