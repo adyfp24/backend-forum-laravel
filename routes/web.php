@@ -14,9 +14,4 @@ use App\Http\Controllers\api\v1\ShortlinkController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('test', function(){
-    echo 'test';
-});
 
-Route::get('/{code}',[ShortlinkController::class, 'redirectLongURL']);
-route::post('/formulir/proses','FormController@proses');
