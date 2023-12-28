@@ -17,11 +17,12 @@ Route::prefix('v1')->group(function(){
 });
 
 # rest api - endpoint me
-Route::get('v1/me',[UserController::class, 'Me'])->middleware('auth:api');
+Route::get('v1/me',[UserController::class, 'me'])->middleware('auth:api');
 
 # rest api - CRUD grup
 Route::middleware(['auth:api'])->prefix('v1')->group(function () {
     Route::get('group', [GroupController::class, 'getGroup']);
+    Route::get('group/{id}', [GroupController::class, 'getGroupById']);
     Route::post('group', [GroupController::class, 'addGroup']);
     Route::put('group/{id}', [GroupController::class, 'updateGroup']);
     Route::delete('group/{id}', [GroupController::class, 'deleteGroup']);

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function Me(){
+    public function me(){
         $user = auth()->user();
         return $user;
     }
