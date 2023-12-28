@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class GroupMember extends Migration
+class AddTimestampsToGroupMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class GroupMember extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('group_members', function (Blueprint $table) {
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class GroupMember extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('group_members', function (Blueprint $table) {
+            //
+        });
     }
 }
