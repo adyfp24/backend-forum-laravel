@@ -28,10 +28,12 @@ Route::middleware(['auth:api'])->prefix('v1')->group(function () {
     Route::delete('group/{id}', [GroupController::class, 'deleteGroup']);
 });
 
-#rest api - CRUD message 
+# rest api - CRUD message 
 Route::middleware(['auth:api'])->prefix('v1')->group(function(){
-    Route::get('message', [MessageController::class, 'index']);
-    Route::post('message', [MessageController::class, 'store']);
+    Route::get('message/{groupId}', [MessageController::class, 'index']);
+    Route::post('message/{groupId}', [MessageController::class, 'store']);
     Route::put('message/{id}', [MessageController::class, 'update']);
     Route::delete('message/{id}', [MessageController::class, 'delete']);
 });
+
+# rest api - group member
