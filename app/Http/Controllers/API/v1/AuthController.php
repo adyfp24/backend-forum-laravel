@@ -12,7 +12,7 @@ use Auth;
 
 class AuthController extends Controller
 {
-    public function Login(Request $request)
+    public function login(Request $request)
     {
         if(auth()->attempt($request->only(['name','password']))){
             $currentUser = auth()->user();
@@ -21,18 +21,18 @@ class AuthController extends Controller
             return response()->json('login gagal');
         }      
     }
-    public function Logout(Request $request)
+    public function logout(Request $request)
     {
         $user = auth()->user();
         $user->api_token = Str::random(80);
           $user->save();
         return response()->json(['message' => 'Logout berhasil'], 200);
     }
-    public function Forget()
+    public function forget()
     {
         return 'cek forget';
     }
-    public function Register(Request $request)
+    public function register(Request $request)
     {
         $user = User::create([
             'name' => $request->name,
