@@ -25,7 +25,7 @@ class AuthController extends Controller
     {
         $user = auth()->user();
         $user->api_token = Str::random(80);
-          $user->save();
+        $user->save();
         return response()->json(['message' => 'Logout berhasil'], 200);
     }
     public function forget()

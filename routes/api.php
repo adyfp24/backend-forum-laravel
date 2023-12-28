@@ -21,16 +21,16 @@ Route::get('v1/me',[UserController::class, 'Me'])->middleware('auth:api');
 
 # rest api - CRUD grup
 Route::middleware(['auth:api'])->prefix('v1')->group(function () {
-    Route::get('group', [GroupController::class, 'index']);
-    Route::post('group', [GroupController::class, 'store']);
-    Route::put('group', [GroupController::class, 'update']);
-    Route::delete('group', [GroupController::class, 'delete']);
+    Route::get('group', [GroupController::class, 'getGroup']);
+    Route::post('group', [GroupController::class, 'addGroup']);
+    Route::put('group/{id}', [GroupController::class, 'updateGroup']);
+    Route::delete('group/{id}', [GroupController::class, 'deleteGroup']);
 });
 
 #rest api - CRUD message 
 Route::middleware(['auth:api'])->prefix('v1')->group(function(){
     Route::get('message', [MessageController::class, 'index']);
     Route::post('message', [MessageController::class, 'store']);
-    Route::put('message', [MessageController::class, 'update']);
-    Route::delete('message', [MessageController::class, 'delete']);
+    Route::put('message/{id}', [MessageController::class, 'update']);
+    Route::delete('message/{id}', [MessageController::class, 'delete']);
 });
