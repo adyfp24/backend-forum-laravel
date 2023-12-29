@@ -30,10 +30,10 @@ Route::middleware(['auth:api'])->prefix('v1')->group(function () {
 
 # rest api - CRUD message 
 Route::middleware(['auth:api'])->prefix('v1')->group(function(){
-    Route::get('message/{groupId}', [MessageController::class, 'index']);
-    Route::post('message/{groupId}', [MessageController::class, 'store']);
-    Route::put('message/{id}', [MessageController::class, 'update']);
-    Route::delete('message/{id}', [MessageController::class, 'delete']);
+    Route::get('message/{groupId}', [MessageController::class, 'getMessage']);
+    Route::post('message/{groupId}', [MessageController::class, 'addMessage']);
+    Route::put('message/{id}', [MessageController::class, 'updateMessage']);
+    Route::delete('message/{id}', [MessageController::class, 'deleteMessage']);
 });
 
 # rest api - group member
