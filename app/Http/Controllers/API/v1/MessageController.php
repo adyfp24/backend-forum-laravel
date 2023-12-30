@@ -26,15 +26,16 @@ class MessageController extends Controller
         ]); 
         return response()->json(['message' => 'pesan tersimpan', 'data pesan' => $message], 200);     
     }
-    public function updateMessage(Request $request, $groupId){
-        // $group = Group::find($id);
-        // if($group){
-        //     $namaGrup = $request->input('nama_grup');
-        //     $group->update(['nama_grup'=>$namaGrup]);
-        //     return response()->json(['message' => 'nama grup berhasil diubah', 'grup' => $group], 200);
-        // }else{
-        //     return response()->json(['message' => 'grup gagal diperbarui'], 400);
-        // }
+    public function updateMessage(Request $request ,$id){
+        $user = auth()->user();
+        $message = Message::find($id);
+
+        if($message && $message->user_id == $user->id){
+            $message->update(['pesan'=>$request->pesan]);
+            return response()->json(['message' => 'nama grup berhasil diubah', 'grup' => $message], 200);
+        }else{
+            return response()->json(['message' => 'grup gagal diperbarui'], 400);
+        }
     }
     public function deleteMessage($id){
         $user = auth()->user();

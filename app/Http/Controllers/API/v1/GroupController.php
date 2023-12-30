@@ -34,8 +34,7 @@ class GroupController extends Controller
     public function updateGroup(Request $request, $id){
         $group = Group::find($id);
         if($group){
-            $namaGrup = $request->input('nama_grup');
-            $group->update(['nama_grup'=>$namaGrup]);
+            $group->update(['nama_grup'=>$request->nama_grup]);
             return response()->json(['message' => 'nama grup berhasil diubah', 'grup' => $group], 200);
         }else{
             return response()->json(['message' => 'grup gagal diperbarui'], 400);
