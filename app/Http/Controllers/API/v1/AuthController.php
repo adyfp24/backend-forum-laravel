@@ -16,6 +16,8 @@ class AuthController extends Controller
     {
         if(auth()->attempt($request->only(['name','password']))){
             $currentUser = auth()->user();
+            $currentUser->api_token = Str::random(80);
+            $currentUser->save();
             return response()->json(['message' => 'Login Berhasil', $currentUser, 201]);
         }else{
             return response()->json('login gagal');
@@ -38,7 +40,6 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'api_token' => Str::random(80),
         ]); 
            return response()->json(['message' => 'Registrasi berhasil', 'user' => $user], 201);
            //new UserResource(return$user);
