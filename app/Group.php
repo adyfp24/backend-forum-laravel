@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    protected $fillable = ['nama_grup'];
+    protected $guarded =[];
     public function groupMembers(){
         return $this->hasMany(GroupMember::class);
     }

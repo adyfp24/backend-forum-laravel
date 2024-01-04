@@ -22,9 +22,13 @@ class GroupController extends Controller
             return response()->json(['message' => 'grup tidak ada'], 400);
         }
     }
-    public function addGroup(Request $request){   
+    public function addGroup(Request $request){  
+        $file = $request->file('profile_grup');
+        $fileName = $file->getClientOriginalName();
+        $file->move('upload',$fileName);
         if($group = Group::create([
-            'nama_grup' => $request->nama_grup
+            'nama_grup' => $request->nama_grup,
+            'profile_grup' =>$fileName
         ])){
             return response()->json(['message' => 'grup berhasil dibuat', 'grup' => $group], 200);
         }else{

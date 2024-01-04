@@ -26,7 +26,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $user = auth()->user();
-        $user->api_token = Str::random(80);
+        $user->api_token->delete();
         $user->save();
         return response()->json(['message' => 'Logout berhasil'], 200);
     }
